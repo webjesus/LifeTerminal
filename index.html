@@ -13,47 +13,61 @@
     <div class="app-shell">
         <aside class="sidebar">
             <div class="sidebar__brand">
-                <div class="brand-mark">LT</div>
+                <div class="profile-avatar profile-avatar--brand" id="sidebarAvatar"></div>
                 <div>
-                    <p class="eyebrow">Productivity OS</p>
+                    <p class="eyebrow" data-i18n="brand.eyebrow">Productivity OS</p>
                     <h1 class="brand-title">Life Terminal</h1>
-                    <p class="sidebar-copy">Единое рабочее пространство для фокуса, задач, привычек и личного прогресса.</p>
+                    <p class="sidebar-copy" data-i18n="brand.description">Единое рабочее пространство для фокуса, задач, привычек и личного прогресса.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-profile">
+                <div>
+                    <strong id="sidebarProfileName" data-i18n="common.guest">Guest</strong>
+                    <p id="sidebarProfileHandle">@local</p>
                 </div>
             </div>
 
             <nav class="sidebar-nav" aria-label="Основная навигация">
-                <a class="nav-item is-active" href="#dashboardSection"><span class="nav-item__icon">◫</span><span>Dashboard</span></a>
-                <a class="nav-item" href="#tasksSection"><span class="nav-item__icon">≡</span><span>Tasks</span></a>
-                <a class="nav-item" href="#habitsSection"><span class="nav-item__icon">◎</span><span>Habits</span></a>
-                <a class="nav-item" href="#goalsSection"><span class="nav-item__icon">◔</span><span>Goals</span></a>
-                <a class="nav-item" href="#calendarSection"><span class="nav-item__icon">◷</span><span>Calendar</span></a>
-                <a class="nav-item" href="#statsSection"><span class="nav-item__icon">▥</span><span>Stats</span></a>
-                <a class="nav-item" href="#settingsSection"><span class="nav-item__icon">⌘</span><span>Settings</span></a>
+                <a class="nav-item is-active" href="#dashboardSection"><span class="nav-item__icon">◫</span><span data-i18n="nav.dashboard">Dashboard</span></a>
+                <a class="nav-item" href="#tasksSection"><span class="nav-item__icon">≡</span><span data-i18n="nav.tasks">Tasks</span></a>
+                <a class="nav-item" href="#habitsSection"><span class="nav-item__icon">◎</span><span data-i18n="nav.habits">Habits</span></a>
+                <a class="nav-item" href="#goalsSection"><span class="nav-item__icon">◔</span><span data-i18n="nav.goals">Goals</span></a>
+                <a class="nav-item" href="#calendarSection"><span class="nav-item__icon">◷</span><span data-i18n="nav.calendar">Calendar</span></a>
+                <a class="nav-item" href="#statsSection"><span class="nav-item__icon">▥</span><span data-i18n="nav.stats">Stats</span></a>
+                <button class="nav-item nav-button" id="settingsNavTrigger" type="button"><span class="nav-item__icon">⌘</span><span data-i18n="nav.settings">Settings</span></button>
             </nav>
 
-            <div class="sidebar-card" id="settingsSection">
-                <span class="sidebar-card__label">Workflow</span>
-                <strong>Drag, plan, iterate.</strong>
-                <p>Перетаскивайте задачи на даты календаря и держите день под контролем без лишнего шума.</p>
+            <div class="sidebar-card">
+                <span class="sidebar-card__label" data-i18n="workflow.label">Workflow</span>
+                <strong data-i18n="workflow.title">Drag, plan, iterate.</strong>
+                <p data-i18n="workflow.description">Перетаскивайте задачи на даты календаря и держите день под контролем без лишнего шума.</p>
             </div>
         </aside>
 
         <div class="workspace">
             <header class="topbar">
                 <div class="topbar-copy">
-                    <p class="eyebrow">Focus dashboard</p>
-                    <h2 class="topbar-title">Премиальный productivity workspace для вашего дня</h2>
-                    <p class="topbar-subtitle">Минималистичный интерфейс для планирования задач, отслеживания привычек и контроля личных целей.</p>
+                    <p class="eyebrow" data-i18n="header.eyebrow">Focus dashboard</p>
+                    <h2 class="topbar-title" data-i18n="header.title">Премиальный productivity workspace для вашего дня</h2>
+                    <p class="topbar-subtitle" data-i18n="header.subtitle">Минималистичный интерфейс для планирования задач, отслеживания привычек и контроля личных целей.</p>
                 </div>
 
                 <div class="topbar-actions">
                     <div class="date-pill">
-                        <span class="date-pill__label">Сегодня</span>
+                        <span class="date-pill__label" data-i18n="common.today">Сегодня</span>
                         <strong id="currentDateLabel">5 мая 2026</strong>
                     </div>
-                    <a class="secondary-button quick-action" href="#taskInput">Новая задача</a>
+                    <a class="secondary-button quick-action" href="#taskInput" data-i18n="tasks.quickAdd">Новая задача</a>
+                    <button class="profile-chip" id="settingsQuickTrigger" type="button">
+                        <div class="profile-avatar profile-avatar--small" id="headerAvatar"></div>
+                        <div>
+                            <strong id="headerProfileName" data-i18n="common.guest">Guest</strong>
+                            <span id="headerProfileHandle">@local</span>
+                        </div>
+                    </button>
                     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">
-                        <span class="theme-toggle__label">Theme</span>
+                        <span class="theme-toggle__label" data-i18n="common.theme">Theme</span>
                         <span class="theme-toggle__icon" id="themeIcon">☀</span>
                     </button>
                 </div>
@@ -63,14 +77,14 @@
                 <section class="card hero-card stats-card" id="dashboardSection">
                     <div class="hero-layout">
                         <div class="hero-copy-block">
-                            <span class="hero-badge">Premium productivity app</span>
+                            <span class="hero-badge" data-i18n="hero.badge">Premium productivity app</span>
                             <h3 class="hero-title">Life Terminal</h3>
-                            <p class="hero-description">Чистый продуктовый интерфейс для управления задачами, календарём, привычками и целью месяца в одном месте.</p>
+                            <p class="hero-description" data-i18n="hero.description">Чистый продуктовый интерфейс для управления задачами, календарём, привычками и целью месяца в одном месте.</p>
                             <div class="hero-tags">
-                                <span class="hero-tag">Tasks</span>
-                                <span class="hero-tag">Calendar</span>
-                                <span class="hero-tag">Habits</span>
-                                <span class="hero-tag">Goals</span>
+                                <span class="hero-tag" data-i18n="nav.tasks">Tasks</span>
+                                <span class="hero-tag" data-i18n="nav.calendar">Calendar</span>
+                                <span class="hero-tag" data-i18n="nav.habits">Habits</span>
+                                <span class="hero-tag" data-i18n="nav.goals">Goals</span>
                             </div>
                         </div>
 
@@ -79,8 +93,8 @@
                                 <span id="progressPercent">0%</span>
                             </div>
                             <div>
-                                <p class="eyebrow">Selected day</p>
-                                <h2>Статистика дня</h2>
+                                <p class="eyebrow" data-i18n="stats.selectedDay">Selected day</p>
+                                <h2 data-i18n="stats.title">Статистика дня</h2>
                                 <p class="section-caption" id="statsDateLabel">Сегодня</p>
                             </div>
                         </div>
@@ -89,17 +103,17 @@
                     <div class="stats-grid">
                         <article class="metric-tile">
                             <span class="metric-tile__icon">◫</span>
-                            <span class="metric-tile__label">Всего задач</span>
+                            <span class="metric-tile__label" data-i18n="stats.totalTasks">Всего задач</span>
                             <strong class="metric-tile__value" id="totalTasks">0</strong>
                         </article>
                         <article class="metric-tile">
                             <span class="metric-tile__icon">✓</span>
-                            <span class="metric-tile__label">Выполнено</span>
+                            <span class="metric-tile__label" data-i18n="stats.completedTasks">Выполнено</span>
                             <strong class="metric-tile__value" id="completedTasks">0</strong>
                         </article>
                         <article class="metric-tile">
                             <span class="metric-tile__icon">↗</span>
-                            <span class="metric-tile__label">Прогресс</span>
+                            <span class="metric-tile__label" data-i18n="stats.dayProgress">Прогресс</span>
                             <strong class="metric-tile__value" id="taskProgress">0%</strong>
                         </article>
                     </div>
@@ -108,41 +122,41 @@
                 <section class="card tasks-card" id="tasksSection">
                     <div class="section-heading">
                         <div>
-                            <p class="eyebrow">Task list</p>
-                            <h2>Задачи</h2>
-                            <p class="section-caption">Чистый inbox для выбранной даты с фильтрами, поиском и drag-and-drop планированием.</p>
+                            <p class="eyebrow" data-i18n="tasks.eyebrow">Task list</p>
+                            <h2 data-i18n="nav.tasks">Задачи</h2>
+                            <p class="section-caption" data-i18n="tasks.description">Чистый inbox для выбранной даты с фильтрами, поиском и drag-and-drop планированием.</p>
                         </div>
                     </div>
 
                     <form class="task-form" id="taskForm">
-                        <input id="taskInput" name="task" type="text" placeholder="Добавить задачу" maxlength="100" required>
+                        <input id="taskInput" name="task" type="text" maxlength="100" required data-i18n-placeholder="tasks.addPlaceholder" placeholder="Добавить задачу">
                         <select id="prioritySelect" name="priority" aria-label="Выберите важность задачи">
-                            <option value="normal">Обычная</option>
-                            <option value="important">Важная</option>
-                            <option value="urgent">Срочная</option>
+                            <option value="normal" data-i18n="tasks.priority.normal">Обычная</option>
+                            <option value="important" data-i18n="tasks.priority.important">Важная</option>
+                            <option value="urgent" data-i18n="tasks.priority.urgent">Срочная</option>
                         </select>
                         <select id="categorySelect" name="category" aria-label="Выберите категорию задачи">
-                            <option value="work">Работа</option>
-                            <option value="study">Учёба</option>
-                            <option value="health">Здоровье</option>
-                            <option value="personal">Личное</option>
-                            <option value="other">Другое</option>
+                            <option value="work" data-i18n="tasks.category.work">Работа</option>
+                            <option value="study" data-i18n="tasks.category.study">Учёба</option>
+                            <option value="health" data-i18n="tasks.category.health">Здоровье</option>
+                            <option value="personal" data-i18n="tasks.category.personal">Личное</option>
+                            <option value="other" data-i18n="tasks.category.other">Другое</option>
                         </select>
-                        <button class="primary-button" type="submit">Добавить</button>
+                        <button class="primary-button" type="submit" data-i18n="tasks.addButton">Добавить</button>
                     </form>
 
                     <div class="task-meta-row">
                         <p class="selected-date-note" id="taskSelectedDateLabel">Выбранная дата: 05.05.2026</p>
-                        <p class="drag-hint">Перетащите задачу на день календаря</p>
+                        <p class="drag-hint" id="dragHintText" data-i18n="tasks.dragHint">Перетащите задачу на день календаря</p>
                     </div>
 
                     <div class="task-toolbar">
                         <div class="task-filters" id="taskFilters" role="tablist" aria-label="Фильтр задач">
-                            <button class="filter-chip is-active" type="button" data-filter="all">Все</button>
-                            <button class="filter-chip" type="button" data-filter="active">Активные</button>
-                            <button class="filter-chip" type="button" data-filter="completed">Выполненные</button>
+                            <button class="filter-chip is-active" type="button" data-filter="all" data-i18n="tasks.filter.all">Все</button>
+                            <button class="filter-chip" type="button" data-filter="active" data-i18n="tasks.filter.active">Активные</button>
+                            <button class="filter-chip" type="button" data-filter="completed" data-i18n="tasks.filter.completed">Выполненные</button>
                         </div>
-                        <input class="search-input" id="searchInput" type="search" placeholder="Поиск задач...">
+                        <input class="search-input" id="searchInput" type="search" data-i18n-placeholder="tasks.searchPlaceholder" placeholder="Поиск задач...">
                     </div>
 
                     <ul class="task-list" id="taskList"></ul>
@@ -152,8 +166,8 @@
                 <section class="card calendar-card" id="calendarSection">
                     <div class="section-heading">
                         <div>
-                            <p class="eyebrow">Calendar</p>
-                            <h2>Календарь</h2>
+                            <p class="eyebrow" data-i18n="calendar.eyebrow">Calendar</p>
+                            <h2 data-i18n="nav.calendar">Календарь</h2>
                             <p class="section-caption" id="calendarSubtitle">Текущий месяц</p>
                         </div>
                     </div>
@@ -172,15 +186,15 @@
 
                     <div class="calendar-summary" id="calendarSummary">
                         <div class="calendar-summary__item">
-                            <span class="calendar-summary__label">Всего</span>
+                            <span class="calendar-summary__label" data-i18n="calendar.summary.total">Всего</span>
                             <strong class="calendar-summary__value" id="summaryTotal">0</strong>
                         </div>
                         <div class="calendar-summary__item">
-                            <span class="calendar-summary__label">Выполнено</span>
+                            <span class="calendar-summary__label" data-i18n="calendar.summary.completed">Выполнено</span>
                             <strong class="calendar-summary__value" id="summaryCompleted">0</strong>
                         </div>
                         <div class="calendar-summary__item">
-                            <span class="calendar-summary__label">Осталось</span>
+                            <span class="calendar-summary__label" data-i18n="calendar.summary.remaining">Осталось</span>
                             <strong class="calendar-summary__value" id="summaryActive">0</strong>
                         </div>
                     </div>
@@ -189,9 +203,9 @@
                 <section class="card habits-card" id="habitsSection">
                     <div class="section-heading">
                         <div>
-                            <p class="eyebrow">Habit tracker</p>
-                            <h2>Привычки</h2>
-                            <p class="section-caption">Ежедневные ритуалы в компактных product-cards с понятной динамикой.</p>
+                            <p class="eyebrow" data-i18n="habits.eyebrow">Habit tracker</p>
+                            <h2 data-i18n="nav.habits">Привычки</h2>
+                            <p class="section-caption" data-i18n="habits.description">Ежедневные ритуалы в компактных product-cards с понятной динамикой.</p>
                         </div>
                     </div>
 
@@ -201,19 +215,19 @@
                 <section class="card goal-card" id="goalsSection">
                     <div class="section-heading">
                         <div>
-                            <p class="eyebrow">Monthly goal</p>
-                            <h2>Цель месяца</h2>
-                            <p class="section-caption">Сосредоточьтесь на одной важной цели и отслеживайте прогресс визуально.</p>
+                            <p class="eyebrow" data-i18n="goals.eyebrow">Monthly goal</p>
+                            <h2 data-i18n="nav.goals">Цель месяца</h2>
+                            <p class="section-caption" data-i18n="goals.description">Сосредоточьтесь на одной важной цели и отслеживайте прогресс визуально.</p>
                         </div>
                     </div>
 
                     <form class="goal-form" id="goalForm">
                         <label>
-                            <span>Название цели</span>
-                            <input id="goalTitle" type="text" placeholder="Например: 20 тренировок за месяц" maxlength="120">
+                            <span data-i18n="goals.goalTitleLabel">Название цели</span>
+                            <input id="goalTitle" type="text" maxlength="120" data-i18n-placeholder="goals.placeholder" placeholder="Например: 20 тренировок за месяц">
                         </label>
                         <label>
-                            <span>Прогресс: <strong id="goalProgressValue">0%</strong></span>
+                            <span><span data-i18n="goals.progressLabel">Прогресс</span>: <strong id="goalProgressValue">0%</strong></span>
                             <input id="goalProgress" type="range" min="0" max="100" value="0">
                         </label>
                     </form>
@@ -232,13 +246,13 @@
                 <section class="card progress-card" id="statsSection">
                     <div class="section-heading section-heading--stacked-mobile">
                         <div>
-                            <p class="eyebrow">Weekly progress</p>
-                            <h2>Прогресс за 7 дней</h2>
-                            <p class="section-caption">Чистая визуализация выполнения задач и быстрый экспорт состояния workspace.</p>
+                            <p class="eyebrow" data-i18n="stats.weeklyEyebrow">Weekly progress</p>
+                            <h2 data-i18n="stats.weeklyTitle">Прогресс за 7 дней</h2>
+                            <p class="section-caption" data-i18n="stats.weeklyDescription">Чистая визуализация выполнения задач и быстрый экспорт состояния workspace.</p>
                         </div>
                         <div class="data-actions">
-                            <button class="secondary-button" id="exportButton" type="button">Экспорт JSON</button>
-                            <button class="secondary-button" id="importButton" type="button">Импорт JSON</button>
+                            <button class="secondary-button" id="exportButton" type="button" data-i18n="settings.exportData">Экспорт JSON</button>
+                            <button class="secondary-button" id="importButton" type="button" data-i18n="settings.importData">Импорт JSON</button>
                             <input id="importInput" type="file" accept="application/json" hidden>
                         </div>
                     </div>
@@ -248,6 +262,135 @@
             </main>
         </div>
     </div>
+
+    <div class="modal-backdrop" id="settingsModal" hidden>
+        <div class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
+            <div class="settings-modal__header">
+                <div>
+                    <p class="eyebrow" data-i18n="nav.settings">Settings</p>
+                    <h2 id="settingsModalTitle" data-i18n="settings.title">Настройки</h2>
+                    <p class="section-caption" data-i18n="settings.subtitle">Локальный профиль, язык и безопасное управление данными в браузере.</p>
+                </div>
+                <button class="icon-button" id="settingsClose" type="button" aria-label="Закрыть">×</button>
+            </div>
+
+            <div class="settings-grid">
+                <section class="settings-section">
+                    <div class="settings-section__header">
+                        <h3 data-i18n="settings.profile">Profile</h3>
+                        <p data-i18n="settings.profileDescription">Личные данные сохраняются локально в этом браузере.</p>
+                    </div>
+
+                    <div class="profile-editor">
+                        <div class="profile-avatar profile-avatar--large" id="modalAvatarPreview"></div>
+                        <div class="profile-editor__actions">
+                            <label class="secondary-button file-trigger" for="avatarInput" data-i18n="settings.avatarUpload">Upload avatar</label>
+                            <input id="avatarInput" type="file" accept="image/*" hidden>
+                            <p class="helper-text" data-i18n="settings.avatarHint">Аватар хранится локально в base64 до подключения облачной синхронизации.</p>
+                        </div>
+                    </div>
+
+                    <form class="profile-form" id="profileForm">
+                        <label class="settings-field">
+                            <span data-i18n="settings.displayName">Display name</span>
+                            <input id="displayNameInput" type="text" maxlength="60">
+                        </label>
+                        <label class="settings-field">
+                            <span data-i18n="settings.firstName">First name</span>
+                            <input id="firstNameInput" type="text" maxlength="60">
+                        </label>
+                        <label class="settings-field">
+                            <span data-i18n="settings.lastName">Last name</span>
+                            <input id="lastNameInput" type="text" maxlength="60">
+                        </label>
+                        <label class="settings-field">
+                            <span data-i18n="settings.username">Username</span>
+                            <input id="usernameInput" type="text" maxlength="40" placeholder="@vebjesus">
+                        </label>
+                        <label class="settings-field">
+                            <span data-i18n="settings.email">Email</span>
+                            <input id="emailInput" type="email" maxlength="100" placeholder="you@example.com">
+                        </label>
+                        <p class="helper-text" data-i18n="settings.usernameHint">Local username. It is unique only on this device.</p>
+                        <button class="primary-button" id="profileSaveButton" type="submit" data-i18n="common.save">Save</button>
+                    </form>
+                </section>
+
+                <section class="settings-section">
+                    <div class="settings-section__header">
+                        <h3 data-i18n="settings.language">Language</h3>
+                        <p data-i18n="settings.languageDescription">Меняйте язык интерфейса и тему без перезагрузки страницы.</p>
+                    </div>
+
+                    <label class="settings-field">
+                        <span data-i18n="settings.language">Language</span>
+                        <select id="languageSelect">
+                            <option value="ru">Русский</option>
+                            <option value="uk">Українська</option>
+                            <option value="en">English</option>
+                        </select>
+                    </label>
+
+                    <label class="settings-field">
+                        <span data-i18n="common.theme">Theme</span>
+                        <select id="themeSelect">
+                            <option value="light" data-i18n="common.light">Light</option>
+                            <option value="dark" data-i18n="common.dark">Dark</option>
+                        </select>
+                    </label>
+                </section>
+
+                <section class="settings-section">
+                    <div class="settings-section__header">
+                        <h3 data-i18n="settings.data">Data</h3>
+                        <p data-i18n="settings.dataDescription">Резервное копирование и перенос локальных данных без потери состояния после деплоев.</p>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="secondary-button" id="settingsExportButton" type="button" data-i18n="settings.exportData">Export data</button>
+                        <button class="secondary-button" id="settingsImportButton" type="button" data-i18n="settings.importData">Import data</button>
+                        <button class="secondary-button danger-button" id="settingsResetButton" type="button" data-i18n="settings.resetData">Reset data</button>
+                        <input id="settingsImportInput" type="file" accept="application/json" hidden>
+                    </div>
+
+                    <div class="data-pills">
+                        <span class="status-pill"><span data-i18n="settings.storageMode">Storage mode</span>: <strong id="storageModeValue">local</strong></span>
+                        <span class="status-pill"><span data-i18n="settings.cloudSync">Cloud sync</span>: <strong id="cloudSyncValue">false</strong></span>
+                    </div>
+                </section>
+
+                <section class="settings-section">
+                    <div class="settings-section__header">
+                        <h3 data-i18n="settings.account">Account</h3>
+                        <p data-i18n="settings.accountDescription">Подготовка под будущую облачную авторизацию без подключения backend на этом этапе.</p>
+                    </div>
+
+                    <div class="account-list">
+                        <div class="account-item">
+                            <span data-i18n="settings.localProfile">Local profile</span>
+                            <span class="status-pill status-pill--active" data-i18n="settings.active">Active</span>
+                        </div>
+                        <div class="account-item">
+                            <span data-i18n="settings.emailLogin">Email login</span>
+                            <button class="secondary-button" id="emailLoginButton" type="button" disabled data-i18n="settings.comingSoon">Coming soon</button>
+                        </div>
+                        <div class="account-item">
+                            <span data-i18n="settings.googleLogin">Google login</span>
+                            <button class="secondary-button" id="googleLoginButton" type="button" disabled data-i18n="settings.comingSoon">Coming soon</button>
+                        </div>
+                        <div class="account-item">
+                            <span data-i18n="settings.cloudSync">Cloud sync</span>
+                            <button class="secondary-button" id="cloudSyncButton" type="button" disabled data-i18n="settings.comingSoon">Coming soon</button>
+                        </div>
+                    </div>
+
+                    <p class="helper-text" data-i18n="settings.accountHint">Your data is stored locally in this browser. Cloud sync requires Supabase/Firebase integration.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" hidden></div>
 
     <template id="taskTemplate">
         <li class="task-item">
@@ -270,7 +413,7 @@
             <span class="habit-card__icon" aria-hidden="true"></span>
             <span class="habit-card__name"></span>
             <strong class="habit-card__count"></strong>
-            <span class="habit-card__hint">Нажмите, чтобы увеличить</span>
+            <span class="habit-card__hint"></span>
         </button>
     </template>
 

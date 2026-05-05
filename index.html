@@ -6,190 +6,253 @@
     <title>Life Terminal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="app-shell">
-        <header class="topbar">
-            <div>
-                <p class="eyebrow">Personal dashboard</p>
-                <h1>Life Terminal</h1>
-                <p class="topbar-subtitle">Задачи, привычки и цель месяца в одном минималистичном интерфейсе.</p>
+        <aside class="sidebar">
+            <div class="sidebar__brand">
+                <div class="brand-mark">LT</div>
+                <div>
+                    <p class="eyebrow">Productivity OS</p>
+                    <h1 class="brand-title">Life Terminal</h1>
+                    <p class="sidebar-copy">Единое рабочее пространство для фокуса, задач, привычек и личного прогресса.</p>
+                </div>
             </div>
-            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">
-                <span class="theme-toggle__label">Theme</span>
-                <span class="theme-toggle__icon" id="themeIcon">☀</span>
-            </button>
-        </header>
 
-        <main class="dashboard">
-            <section class="card card--hero stats-card">
-                <div class="section-heading">
-                    <div>
-                        <p class="eyebrow">Daily stats</p>
-                        <h2>Статистика дня</h2>
-                        <p class="section-caption" id="statsDateLabel">Сегодня</p>
-                    </div>
-                    <div class="progress-ring">
-                        <span id="progressPercent">0%</span>
-                    </div>
+            <nav class="sidebar-nav" aria-label="Основная навигация">
+                <a class="nav-item is-active" href="#dashboardSection"><span class="nav-item__icon">◫</span><span>Dashboard</span></a>
+                <a class="nav-item" href="#tasksSection"><span class="nav-item__icon">≡</span><span>Tasks</span></a>
+                <a class="nav-item" href="#habitsSection"><span class="nav-item__icon">◎</span><span>Habits</span></a>
+                <a class="nav-item" href="#goalsSection"><span class="nav-item__icon">◔</span><span>Goals</span></a>
+                <a class="nav-item" href="#calendarSection"><span class="nav-item__icon">◷</span><span>Calendar</span></a>
+                <a class="nav-item" href="#statsSection"><span class="nav-item__icon">▥</span><span>Stats</span></a>
+                <a class="nav-item" href="#settingsSection"><span class="nav-item__icon">⌘</span><span>Settings</span></a>
+            </nav>
+
+            <div class="sidebar-card" id="settingsSection">
+                <span class="sidebar-card__label">Workflow</span>
+                <strong>Drag, plan, iterate.</strong>
+                <p>Перетаскивайте задачи на даты календаря и держите день под контролем без лишнего шума.</p>
+            </div>
+        </aside>
+
+        <div class="workspace">
+            <header class="topbar">
+                <div class="topbar-copy">
+                    <p class="eyebrow">Focus dashboard</p>
+                    <h2 class="topbar-title">Премиальный productivity workspace для вашего дня</h2>
+                    <p class="topbar-subtitle">Минималистичный интерфейс для планирования задач, отслеживания привычек и контроля личных целей.</p>
                 </div>
 
-                <div class="stats-grid">
-                    <article class="metric-tile">
-                        <span class="metric-tile__label">Всего задач</span>
-                        <strong class="metric-tile__value" id="totalTasks">0</strong>
-                    </article>
-                    <article class="metric-tile">
-                        <span class="metric-tile__label">Выполнено</span>
-                        <strong class="metric-tile__value" id="completedTasks">0</strong>
-                    </article>
-                    <article class="metric-tile">
-                        <span class="metric-tile__label">Прогресс</span>
-                        <strong class="metric-tile__value" id="taskProgress">0%</strong>
-                    </article>
+                <div class="topbar-actions">
+                    <div class="date-pill">
+                        <span class="date-pill__label">Сегодня</span>
+                        <strong id="currentDateLabel">5 мая 2026</strong>
+                    </div>
+                    <a class="secondary-button quick-action" href="#taskInput">Новая задача</a>
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">
+                        <span class="theme-toggle__label">Theme</span>
+                        <span class="theme-toggle__icon" id="themeIcon">☀</span>
+                    </button>
                 </div>
-            </section>
+            </header>
 
-            <section class="card tasks-card">
-                <div class="section-heading">
-                    <div>
-                        <p class="eyebrow">Task list</p>
-                        <h2>Задачи</h2>
-                    </div>
-                </div>
+            <main class="dashboard">
+                <section class="card hero-card stats-card" id="dashboardSection">
+                    <div class="hero-layout">
+                        <div class="hero-copy-block">
+                            <span class="hero-badge">Premium productivity app</span>
+                            <h3 class="hero-title">Life Terminal</h3>
+                            <p class="hero-description">Чистый продуктовый интерфейс для управления задачами, календарём, привычками и целью месяца в одном месте.</p>
+                            <div class="hero-tags">
+                                <span class="hero-tag">Tasks</span>
+                                <span class="hero-tag">Calendar</span>
+                                <span class="hero-tag">Habits</span>
+                                <span class="hero-tag">Goals</span>
+                            </div>
+                        </div>
 
-                <form class="task-form" id="taskForm">
-                    <input id="taskInput" name="task" type="text" placeholder="Добавить задачу" maxlength="100" required>
-                    <select id="prioritySelect" name="priority" aria-label="Выберите важность задачи">
-                        <option value="normal">Обычная</option>
-                        <option value="important">Важная</option>
-                        <option value="urgent">Срочная</option>
-                    </select>
-                    <select id="categorySelect" name="category" aria-label="Выберите категорию задачи">
-                        <option value="work">Работа</option>
-                        <option value="study">Учёба</option>
-                        <option value="health">Здоровье</option>
-                        <option value="personal">Личное</option>
-                        <option value="other">Другое</option>
-                    </select>
-                    <button class="primary-button" type="submit">Добавить</button>
-                </form>
-                <p class="selected-date-note" id="taskSelectedDateLabel">Выбранная дата: 05.05.2026</p>
-                <p class="drag-hint">Перетащите задачу на день календаря</p>
+                        <div class="hero-highlight">
+                            <div class="progress-ring">
+                                <span id="progressPercent">0%</span>
+                            </div>
+                            <div>
+                                <p class="eyebrow">Selected day</p>
+                                <h2>Статистика дня</h2>
+                                <p class="section-caption" id="statsDateLabel">Сегодня</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="task-toolbar">
-                    <div class="task-filters" id="taskFilters" role="tablist" aria-label="Фильтр задач">
-                        <button class="filter-chip is-active" type="button" data-filter="all">Все</button>
-                        <button class="filter-chip" type="button" data-filter="active">Активные</button>
-                        <button class="filter-chip" type="button" data-filter="completed">Выполненные</button>
+                    <div class="stats-grid">
+                        <article class="metric-tile">
+                            <span class="metric-tile__icon">◫</span>
+                            <span class="metric-tile__label">Всего задач</span>
+                            <strong class="metric-tile__value" id="totalTasks">0</strong>
+                        </article>
+                        <article class="metric-tile">
+                            <span class="metric-tile__icon">✓</span>
+                            <span class="metric-tile__label">Выполнено</span>
+                            <strong class="metric-tile__value" id="completedTasks">0</strong>
+                        </article>
+                        <article class="metric-tile">
+                            <span class="metric-tile__icon">↗</span>
+                            <span class="metric-tile__label">Прогресс</span>
+                            <strong class="metric-tile__value" id="taskProgress">0%</strong>
+                        </article>
                     </div>
-                    <input class="search-input" id="searchInput" type="search" placeholder="Поиск задач...">
-                </div>
+                </section>
 
-                <ul class="task-list" id="taskList"></ul>
-                <p class="empty-state" id="taskEmptyState">Пока нет задач. Добавьте первую.</p>
-            </section>
+                <section class="card tasks-card" id="tasksSection">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">Task list</p>
+                            <h2>Задачи</h2>
+                            <p class="section-caption">Чистый inbox для выбранной даты с фильтрами, поиском и drag-and-drop планированием.</p>
+                        </div>
+                    </div>
 
-            <section class="card calendar-card">
-                <div class="section-heading">
-                    <div>
-                        <p class="eyebrow">Calendar</p>
-                        <h2>Календарь</h2>
-                        <p class="section-caption" id="calendarSubtitle">Текущий месяц</p>
-                    </div>
-                </div>
+                    <form class="task-form" id="taskForm">
+                        <input id="taskInput" name="task" type="text" placeholder="Добавить задачу" maxlength="100" required>
+                        <select id="prioritySelect" name="priority" aria-label="Выберите важность задачи">
+                            <option value="normal">Обычная</option>
+                            <option value="important">Важная</option>
+                            <option value="urgent">Срочная</option>
+                        </select>
+                        <select id="categorySelect" name="category" aria-label="Выберите категорию задачи">
+                            <option value="work">Работа</option>
+                            <option value="study">Учёба</option>
+                            <option value="health">Здоровье</option>
+                            <option value="personal">Личное</option>
+                            <option value="other">Другое</option>
+                        </select>
+                        <button class="primary-button" type="submit">Добавить</button>
+                    </form>
 
-                <div class="calendar-header">
-                    <button class="calendar-nav" id="calendarPrev" type="button" aria-label="Предыдущий месяц">‹</button>
-                    <div class="calendar-title">
-                        <strong id="calendarMonthLabel"></strong>
-                        <div class="calendar-selected-date" id="selectedDateLabel"></div>
+                    <div class="task-meta-row">
+                        <p class="selected-date-note" id="taskSelectedDateLabel">Выбранная дата: 05.05.2026</p>
+                        <p class="drag-hint">Перетащите задачу на день календаря</p>
                     </div>
-                    <button class="calendar-nav" id="calendarNext" type="button" aria-label="Следующий месяц">›</button>
-                </div>
-                <div class="calendar-weekdays" id="calendarWeekdays"></div>
-                <div class="calendar-grid" id="calendarGrid"></div>
-                <div class="calendar-summary" id="calendarSummary">
-                    <div class="calendar-summary__item">
-                        <span class="calendar-summary__label">Всего</span>
-                        <strong class="calendar-summary__value" id="summaryTotal">0</strong>
-                    </div>
-                    <div class="calendar-summary__item">
-                        <span class="calendar-summary__label">Выполнено</span>
-                        <strong class="calendar-summary__value" id="summaryCompleted">0</strong>
-                    </div>
-                    <div class="calendar-summary__item">
-                        <span class="calendar-summary__label">Осталось</span>
-                        <strong class="calendar-summary__value" id="summaryActive">0</strong>
-                    </div>
-                </div>
-            </section>
 
-            <section class="card habits-card">
-                <div class="section-heading">
-                    <div>
-                        <p class="eyebrow">Habit tracker</p>
-                        <h2>Привычки</h2>
+                    <div class="task-toolbar">
+                        <div class="task-filters" id="taskFilters" role="tablist" aria-label="Фильтр задач">
+                            <button class="filter-chip is-active" type="button" data-filter="all">Все</button>
+                            <button class="filter-chip" type="button" data-filter="active">Активные</button>
+                            <button class="filter-chip" type="button" data-filter="completed">Выполненные</button>
+                        </div>
+                        <input class="search-input" id="searchInput" type="search" placeholder="Поиск задач...">
                     </div>
-                </div>
 
-                <div class="habit-grid" id="habitGrid"></div>
-            </section>
+                    <ul class="task-list" id="taskList"></ul>
+                    <p class="empty-state" id="taskEmptyState">Пока нет задач. Добавьте первую.</p>
+                </section>
 
-            <section class="card goal-card">
-                <div class="section-heading">
-                    <div>
-                        <p class="eyebrow">Monthly goal</p>
-                        <h2>Цель месяца</h2>
+                <section class="card calendar-card" id="calendarSection">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">Calendar</p>
+                            <h2>Календарь</h2>
+                            <p class="section-caption" id="calendarSubtitle">Текущий месяц</p>
+                        </div>
                     </div>
-                </div>
 
-                <form class="goal-form" id="goalForm">
-                    <label>
-                        <span>Название цели</span>
-                        <input id="goalTitle" type="text" placeholder="Например: 20 тренировок за месяц" maxlength="120">
-                    </label>
-                    <label>
-                        <span>Прогресс: <strong id="goalProgressValue">0%</strong></span>
-                        <input id="goalProgress" type="range" min="0" max="100" value="0">
-                    </label>
-                </form>
+                    <div class="calendar-header">
+                        <button class="calendar-nav" id="calendarPrev" type="button" aria-label="Предыдущий месяц">‹</button>
+                        <div class="calendar-title">
+                            <strong id="calendarMonthLabel"></strong>
+                            <div class="calendar-selected-date" id="selectedDateLabel"></div>
+                        </div>
+                        <button class="calendar-nav" id="calendarNext" type="button" aria-label="Следующий месяц">›</button>
+                    </div>
 
-                <div class="goal-preview">
-                    <div class="goal-preview__header">
-                        <span id="goalPreviewTitle">Цель пока не задана</span>
-                        <strong id="goalPreviewPercent">0%</strong>
-                    </div>
-                    <div class="goal-progress-bar">
-                        <div class="goal-progress-bar__fill" id="goalProgressFill"></div>
-                    </div>
-                </div>
-            </section>
+                    <div class="calendar-weekdays" id="calendarWeekdays"></div>
+                    <div class="calendar-grid" id="calendarGrid"></div>
 
-            <section class="card progress-card">
-                <div class="section-heading section-heading--stacked-mobile">
-                    <div>
-                        <p class="eyebrow">Weekly progress</p>
-                        <h2>Прогресс за 7 дней</h2>
-                        <p class="section-caption">Выполнение задач по дням</p>
+                    <div class="calendar-summary" id="calendarSummary">
+                        <div class="calendar-summary__item">
+                            <span class="calendar-summary__label">Всего</span>
+                            <strong class="calendar-summary__value" id="summaryTotal">0</strong>
+                        </div>
+                        <div class="calendar-summary__item">
+                            <span class="calendar-summary__label">Выполнено</span>
+                            <strong class="calendar-summary__value" id="summaryCompleted">0</strong>
+                        </div>
+                        <div class="calendar-summary__item">
+                            <span class="calendar-summary__label">Осталось</span>
+                            <strong class="calendar-summary__value" id="summaryActive">0</strong>
+                        </div>
                     </div>
-                    <div class="data-actions">
-                        <button class="secondary-button" id="exportButton" type="button">Экспорт JSON</button>
-                        <button class="secondary-button" id="importButton" type="button">Импорт JSON</button>
-                        <input id="importInput" type="file" accept="application/json" hidden>
-                    </div>
-                </div>
+                </section>
 
-                <div class="chart" id="progressChart"></div>
-            </section>
-        </main>
+                <section class="card habits-card" id="habitsSection">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">Habit tracker</p>
+                            <h2>Привычки</h2>
+                            <p class="section-caption">Ежедневные ритуалы в компактных product-cards с понятной динамикой.</p>
+                        </div>
+                    </div>
+
+                    <div class="habit-grid" id="habitGrid"></div>
+                </section>
+
+                <section class="card goal-card" id="goalsSection">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">Monthly goal</p>
+                            <h2>Цель месяца</h2>
+                            <p class="section-caption">Сосредоточьтесь на одной важной цели и отслеживайте прогресс визуально.</p>
+                        </div>
+                    </div>
+
+                    <form class="goal-form" id="goalForm">
+                        <label>
+                            <span>Название цели</span>
+                            <input id="goalTitle" type="text" placeholder="Например: 20 тренировок за месяц" maxlength="120">
+                        </label>
+                        <label>
+                            <span>Прогресс: <strong id="goalProgressValue">0%</strong></span>
+                            <input id="goalProgress" type="range" min="0" max="100" value="0">
+                        </label>
+                    </form>
+
+                    <div class="goal-preview">
+                        <div class="goal-preview__header">
+                            <span id="goalPreviewTitle">Цель пока не задана</span>
+                            <strong id="goalPreviewPercent">0%</strong>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-bar__fill" id="goalProgressFill"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card progress-card" id="statsSection">
+                    <div class="section-heading section-heading--stacked-mobile">
+                        <div>
+                            <p class="eyebrow">Weekly progress</p>
+                            <h2>Прогресс за 7 дней</h2>
+                            <p class="section-caption">Чистая визуализация выполнения задач и быстрый экспорт состояния workspace.</p>
+                        </div>
+                        <div class="data-actions">
+                            <button class="secondary-button" id="exportButton" type="button">Экспорт JSON</button>
+                            <button class="secondary-button" id="importButton" type="button">Импорт JSON</button>
+                            <input id="importInput" type="file" accept="application/json" hidden>
+                        </div>
+                    </div>
+
+                    <div class="chart" id="progressChart"></div>
+                </section>
+            </main>
+        </div>
     </div>
 
     <template id="taskTemplate">
         <li class="task-item">
             <label class="task-item__main">
+                <span class="task-item__drag" aria-hidden="true">⋮⋮</span>
                 <input class="task-item__checkbox" type="checkbox">
                 <span class="task-item__text"></span>
             </label>
@@ -204,6 +267,7 @@
 
     <template id="habitTemplate">
         <button class="habit-card" type="button">
+            <span class="habit-card__icon" aria-hidden="true"></span>
             <span class="habit-card__name"></span>
             <strong class="habit-card__count"></strong>
             <span class="habit-card__hint">Нажмите, чтобы увеличить</span>

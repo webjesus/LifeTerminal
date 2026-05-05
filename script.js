@@ -29,10 +29,18 @@ const categoryLabels = {
     other: "Другое"
 };
 
+const habitIcons = {
+    running: "↗",
+    study: "⌁",
+    water: "◔",
+    reading: "☰"
+};
+
 const elements = {
     body: document.body,
     themeToggle: document.getElementById("themeToggle"),
     themeIcon: document.getElementById("themeIcon"),
+    currentDateLabel: document.getElementById("currentDateLabel"),
     totalTasks: document.getElementById("totalTasks"),
     completedTasks: document.getElementById("completedTasks"),
     taskProgress: document.getElementById("taskProgress"),
@@ -89,6 +97,7 @@ init();
 
 function init() {
     applyTheme(state.theme);
+    renderHeaderDate();
     renderCalendarWeekdays();
     renderCalendar();
     renderTasks();
@@ -112,7 +121,7 @@ function init() {
 }
 
 function loadTheme() {
-    return localStorage.getItem(STORAGE_KEYS.theme) || "dark";
+    return localStorage.getItem(STORAGE_KEYS.theme) || "light";
 }
 
 function loadSelectedDate() {
@@ -173,6 +182,14 @@ function handleThemeToggle() {
 function applyTheme(theme) {
     elements.body.classList.toggle("dark", theme === "dark");
     elements.themeIcon.textContent = theme === "dark" ? "☀" : "☾";
+}
+
+function renderHeaderDate() {
+    elements.currentDateLabel.textContent = new Date().toLocaleDateString("ru-RU", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
 }
 
 function handleTaskSubmit(event) {
@@ -338,9 +355,11 @@ function renderHabits() {
     state.habits.forEach((habit) => {
         const fragment = elements.habitTemplate.content.cloneNode(true);
         const card = fragment.querySelector(".habit-card");
+        const icon = fragment.querySelector(".habit-card__icon");
         const name = fragment.querySelector(".habit-card__name");
         const count = fragment.querySelector(".habit-card__count");
 
+        icon.textContent = habitIcons[habit.id] || "◦";
         name.textContent = habit.name;
         count.textContent = `${habit.count} дн.`;
 
